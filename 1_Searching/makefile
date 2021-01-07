@@ -21,15 +21,15 @@ LINKERFLAG = -lm
 
 
 SRCS := $(wildcard *.cpp)
-BINS := $(SRCS:%.cpp=%)
+BINS := $(SRCS:%.cpp=%.exe)
 
 all: ${BINS}
 
-%: %.o
+%.exe: %.o
 	@echo "Checking.."
 	${CC} ${CFLAGS } ${LINKERFLAG} $< -o $@
 
-%.o: %.c
+%.o: %.cpp
 	@echo "Creating object.."
 	${CC} -c $<
 
